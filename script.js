@@ -69,3 +69,35 @@ $($('figure')).mouseenter(function () {
     $('figcaption', this).css('visibility', 'visible');
     $(this).css('cursor', 'pointer');
 });
+
+$("#buttonSubmit").click((e)=>{
+    e.preventDefault()
+
+    var email = $("#inputEmail");
+    var name = $("#inputName");
+    var description = $("#textAreaDescription");
+
+    console.log(email.val());
+    console.log(name.val());
+    console.log(description.val());
+
+    var payload = {
+        "name": name.val(),
+        "email": email.val(),
+        "content": description.val()
+    }
+    $.ajax({
+        url: 'https://secret-dusk-62126.herokuapp.com/',
+        type: 'POST',
+        dataType: 'json',
+        data: payload,
+        success: function () {
+            window.alert("Dados enviados com sucesso!")
+        },
+        error: function () {
+            window.alert("Ocorreu um erro ao enviar os dados!")
+        }
+    });
+
+    console.log(payload);
+})
