@@ -70,29 +70,25 @@ $($('figure')).mouseenter(function () {
     $(this).css('cursor', 'pointer');
 });
 
-$("#buttonSubmit").click((e)=>{
+$("#buttonSubmit").click((e) => {
     e.preventDefault()
 
-    var email = $("#inputEmail");
-    var name = $("#inputName");
-    var description = $("#textAreaDescription");
-
     var payload = {
-        "name": name.val(),
-        "email": email.val(),
-        "content": description.val()
+        name: `${$("#inputName").val()}`,
+        email: `${$("#inputEmail").val()}`,
+        content: `${$("#textAreaDescription").val()}`
     }
+
     $.ajax({
         url: 'https://secret-dusk-62126.herokuapp.com/',
         type: 'POST',
-        dataType: 'json',
-        data: payload,
-        success: function () {
-            window.alert("Dados enviados com sucesso!")
+        data: JSON.stringify(payload),
+        contentType: "application/json; charset=utf-8",
+        success: function (e) {
+            window.alert("O orçamento foi enviado com sucesso! Em breve você receberá um retorno com seu orçamento.")
         },
-        error: function () {
-            window.alert("Ocorreu um erro ao enviar os dados!")
+        error: function (e) {
+            window.alert("Ocorreu um problema ao enviar o orçamento. Tente novamente.")
         }
     });
-    console.log(payload);
 })
