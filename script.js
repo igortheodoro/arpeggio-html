@@ -77,10 +77,6 @@ $("#buttonSubmit").click((e)=>{
     var name = $("#inputName");
     var description = $("#textAreaDescription");
 
-    console.log(email.val());
-    console.log(name.val());
-    console.log(description.val());
-
     var payload = {
         "name": name.val(),
         "email": email.val(),
@@ -98,6 +94,5 @@ $("#buttonSubmit").click((e)=>{
             window.alert("Ocorreu um erro ao enviar os dados!")
         }
     });
-
     console.log(payload);
 })
