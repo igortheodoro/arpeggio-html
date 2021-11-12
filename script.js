@@ -83,7 +83,9 @@ $("#buttonSubmit").click((e) => {
         url: 'https://secret-dusk-62126.herokuapp.com/',
         type: 'POST',
         data: JSON.stringify(payload),
-        contentType: "application/json; charset=utf-8",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         success: function (e) {
             window.alert("O orçamento foi enviado com sucesso! Em breve você receberá um retorno com seu orçamento.")
         },
